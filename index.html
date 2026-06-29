@@ -43,9 +43,8 @@ h2{font-size:25px;line-height:1.28;margin:0 0 10px;letter-spacing:0;color:#2e292
     <div class="form-grid">
       <label>학생 이름 <input id="studentName" autocomplete="name" placeholder="이름" /></label>
       <label>학년
-        <select id="grade"><option value="">선택</option><option>초등</option><option>중등</option><option>고등</option></select>
+        <select id="grade"><option value="">선택</option><option>초5</option><option>초6</option><option>중1</option><option>중2</option><option>중3</option><option>고1</option><option>고2</option><option>고3</option></select>
       </label>
-      <label class="wide">반 / 담당 선생님 <input id="teacherName" placeholder="예: 중2 화목 7시 / 담당 선생님" /></label>
     </div>
     <div class="check">
       <input id="consent" type="checkbox" />
@@ -85,7 +84,6 @@ function startCheckin(){
   const errors = [];
   if(!document.getElementById('studentName').value.trim()) errors.push('이름을 입력해 주세요.');
   if(!document.getElementById('grade').value) errors.push('학년을 선택해 주세요.');
-  if(!document.getElementById('teacherName').value.trim()) errors.push('반 / 담당 선생님을 입력해 주세요.');
   if(!document.getElementById('consent').checked) errors.push('학습 코칭 활용 안내를 확인해 주세요.');
   if(GAS_WEB_APP_URL.includes('PASTE_')) errors.push('아직 제출 주소가 설정되지 않았습니다. 선생님에게 알려주세요.');
   if(errors.length){ alert(errors.join('\n')); return; }
@@ -175,8 +173,7 @@ function buildPayload(){
     clientSubmissionId:'KLP-MOBILE-' + Date.now() + '-' + Math.random().toString(36).slice(2,8),
     student:{
       name:document.getElementById('studentName').value.trim(),
-      grade:document.getElementById('grade').value,
-      teacher:document.getElementById('teacherName').value.trim()
+      grade:document.getElementById('grade').value
     },
     consentChecked:document.getElementById('consent').checked,
     selfWrittenAnswers:{
