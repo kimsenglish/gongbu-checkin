@@ -6,23 +6,24 @@
 <title>공부 체크인</title>
 <style>
 :root{
-  --bg:#f8f6f2; --card:#fff; --ink:#242424; --muted:#666; --line:#e3d9cc;
-  --accent:#5b4634; --soft:#efe6da; --good:#3f7450; --bad:#9a4444;
+  --bg:#f4f7f5; --card:#fff; --ink:#1f2927; --muted:#68736f; --line:#dce6e0;
+  --accent:#28624f; --soft:#e9f3ef; --good:#2f7d57; --bad:#b84a56; --blue:#315f7d; --gold:#c89436;
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",Segoe UI,sans-serif;color:var(--ink);line-height:1.58}
-header{position:sticky;top:0;z-index:10;background:rgba(248,246,242,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:12px 15px}
+body:before{content:"";position:fixed;inset:0;background:linear-gradient(140deg,rgba(40,98,79,.10),rgba(49,95,125,.05) 42%,rgba(200,148,54,.07));pointer-events:none;z-index:-1}
+header{position:sticky;top:0;z-index:10;background:rgba(244,247,245,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:12px 15px}
 .head{max-width:760px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
-h1{font-size:19px;margin:0;color:var(--accent);letter-spacing:0}.sub{font-size:12px;color:var(--muted);margin-top:2px}
-.progress-box{min-width:130px}.progress-label{font-size:12px;color:var(--muted);text-align:right;margin-bottom:4px}.bar{height:8px;background:#e8dfd4;border-radius:99px;overflow:hidden}.bar span{display:block;height:100%;width:0;background:var(--accent);transition:.2s}
-main{max-width:760px;margin:0 auto;padding:17px 14px 88px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;margin:13px 0;box-shadow:0 5px 22px rgba(0,0,0,.04)}
+.brand{display:flex;align-items:center;gap:10px}.logo-mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--blue));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:19px;box-shadow:0 6px 18px rgba(40,98,79,.18)}.brand-title{font-weight:950;color:#1f332d;font-size:15px}.brand-sub{font-size:10px;color:var(--muted);font-weight:800;letter-spacing:.08em;margin-top:1px}h1{font-size:19px;margin:0;color:var(--accent);letter-spacing:0}.sub{font-size:12px;color:var(--muted);margin-top:2px}
+.progress-box{min-width:130px}.progress-label{font-size:12px;color:var(--muted);text-align:right;margin-bottom:4px}.bar{height:8px;background:#dce6e0;border-radius:99px;overflow:hidden}.bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--blue));transition:.2s}
+main{max-width:760px;margin:0 auto;padding:17px 14px 88px}.card{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:18px;padding:20px;margin:13px 0;box-shadow:0 10px 28px rgba(31,41,39,.07)}
 h2{font-size:25px;line-height:1.28;margin:0 0 10px;letter-spacing:0;color:#2e2925}p{margin:9px 0}.notice{background:var(--soft);border-radius:14px;padding:13px;color:#44362b;margin:12px 0}.quiet{font-size:13px;color:var(--muted)}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:13px}label{font-weight:800;color:#4b3a2e;font-size:14px}input,select,textarea{width:100%;font-size:16px;padding:13px;border:1px solid var(--line);border-radius:12px;background:#fff;margin-top:5px}textarea{min-height:96px;resize:vertical;line-height:1.5}.wide{grid-column:1/-1}
 .check{display:flex;gap:9px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:11px;margin-top:12px;background:#fff}.check input{width:auto;margin:4px 0 0}
 .q-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px;color:var(--muted);font-size:13px}.pill{background:#f4efe8;border:1px solid #eadfD2;border-radius:999px;padding:4px 9px;color:#634b36;font-weight:800}
 .q-text{font-size:22px;font-weight:900;line-height:1.43;margin:8px 0 13px;letter-spacing:0}.helper{background:#f8f5f0;border:1px solid #eee4d9;border-radius:13px;padding:10px 11px;color:#584838;font-size:14px;margin:9px 0 14px}
 .choices{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.choice{border:1px solid var(--line);border-radius:15px;background:#fff;min-height:76px;padding:11px 7px;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;cursor:pointer;font-size:13px;user-select:none}.choice strong{font-size:20px;margin-bottom:2px}.choice.selected{border-color:var(--accent);background:var(--soft);color:var(--accent);font-weight:900;box-shadow:0 0 0 2px rgba(91,70,52,.08) inset}.choice.option{grid-column:1/-1;min-height:auto;align-items:flex-start;text-align:left;padding:13px 14px;font-size:15px}.choice-number{font-weight:900;color:var(--accent);margin-right:5px}
-.nav{position:fixed;left:0;right:0;bottom:0;background:rgba(248,246,242,.98);border-top:1px solid var(--line);padding:10px 14px;display:flex;gap:10px;justify-content:center}button{border:0;border-radius:999px;padding:13px 17px;font-size:16px;font-weight:900;cursor:pointer}.primary{background:var(--accent);color:#fff}.secondary{background:#ebe7e0;color:#333}button:disabled{opacity:.45;cursor:not-allowed}.hidden{display:none!important}
+.nav{position:fixed;left:0;right:0;bottom:0;background:rgba(244,247,245,.98);border-top:1px solid var(--line);padding:10px 14px;display:flex;gap:10px;justify-content:center}button{border:0;border-radius:999px;padding:13px 17px;font-size:16px;font-weight:900;cursor:pointer}.primary{background:linear-gradient(135deg,var(--accent),#1f4d41);color:#fff}.secondary{background:#e7eeea;color:#26322f}button:disabled{opacity:.45;cursor:not-allowed}.hidden{display:none!important}
 .done{border-left:5px solid var(--good);background:#f3faf4}.error{border-left:5px solid var(--bad);background:#fff3f3}.spinner{width:22px;height:22px;border:3px solid #e5d8c8;border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;display:inline-block;vertical-align:middle;margin-right:8px}@keyframes spin{to{transform:rotate(360deg)}}
 @media(max-width:640px){.head{display:block}.progress-box{margin-top:8px}.progress-label{text-align:left}.form-grid{grid-template-columns:1fr}.choices{grid-template-columns:1fr}.choice{min-height:auto;align-items:flex-start;text-align:left;padding:12px 13px}.q-text{font-size:21px}.card{padding:18px}.nav button{flex:1}}
 </style>
@@ -30,7 +31,7 @@ h2{font-size:25px;line-height:1.28;margin:0 0 10px;letter-spacing:0;color:#2e292
 <body>
 <header>
   <div class="head">
-    <div><h1>공부 체크인</h1><div class="sub">나에게 맞는 공부 방법을 찾는 시간</div></div>
+    <div class="brand"><div class="logo-mark">K</div><div><div class="brand-title">김가영어학원</div><div class="brand-sub">KIM KA YOUNG ENGLISH</div></div></div>
     <div class="progress-box"><div class="progress-label" id="progressLabel">시작 전</div><div class="bar"><span id="progressBar"></span></div></div>
   </div>
 </header>
